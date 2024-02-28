@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/chicken.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Level1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Level1.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+
+[node name="Level1" type="Node2D"]
+
+[node name="nivel1" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 2, 2 )
+tile_data = PoolIntArray( 0, 2, 0, 1, 2, 0, 2, 3, 0, 3, 3, 0, 65536, 2, 0, 65537, 2, 0, 65538, 3, 0, 65539, 3, 0, 131072, 2, 0, 131073, 2, 0, 131074, 2, 0, 131075, 2, 0, 196608, 2, 0, 196609, 2, 0, 196610, 2, 0, 196611, 2, 0 )
+script = ExtResource( 3 )
+
+[node name="chicken" parent="nivel1" instance=ExtResource( 1 )]
+position = Vector2( 39, 9 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[connection signal="area_entered" from="nivel1/chicken" to="nivel1" method="_on_chicken_area_entered"]
+
+[editable path="nivel1"]
